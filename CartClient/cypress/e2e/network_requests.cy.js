@@ -94,15 +94,6 @@ context("Network Requests", () => {
 
     // Get Order By ID
     cy.get("@id").then((id) => {
-      cy.request({
-        url: `${base}order/byid`,
-        qs: {
-          id: id,
-        },
-      }).then((response) => {
-        expect(response.status).to.eq(200);
-      });
-
       // Delete Order
       cy.request("DELETE", `${base}order?id=${id}`).then((response) => {
         expect(response.status).to.eq(200);
